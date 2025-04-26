@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_26_160440) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_26_195842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_26_160440) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.text "background_image"
+    t.string "platform"
     t.index ["user_id"], name: "index_videogames_on_user_id"
   end
 
