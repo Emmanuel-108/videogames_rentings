@@ -1,0 +1,37 @@
+.body {
+  font-family: 'Jersey 25', sans-serif;
+}
+.body-input{
+  font-family: 'Jersey 25', sans-serif;
+  font-weight: 300;
+}
+.card {
+  border: 2px solid #051936;
+  box-shadow: 0 4px 12px rgba(41, 127, 255, 0.25);
+  background-color:rgb(255, 255, 255);
+  border-radius: 1rem;
+}
+.card h2 {
+  color: #051936;
+  font-weight: 600;
+}
+.form-control {
+  border-radius: 0.5rem;
+}
+.btn-outline-success {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.form-inputs input:hover {
+  border-color: #5e86c1;
+  background-color: #eaf0f9;
+  box-shadow: 0 0 5px #051936;
+  transition: 0.3s;
+}
+
+input, input::placeholder, .form-control {
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+}
