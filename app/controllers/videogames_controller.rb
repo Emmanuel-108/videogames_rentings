@@ -39,6 +39,6 @@ class VideogamesController < ApplicationController
   private
 
   def videogame_params
-    params.require(:videogame).permit(:name, :description, :rating, :price)
+    params.require(:videogame).permit(:name, :description, :rating, :price, :photo)
   end
 end
