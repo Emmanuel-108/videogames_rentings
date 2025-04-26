@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :videogames
   has_many :bookings
 
-  validates :first_name, :last_name, :email_address, presence: true
+  validates :first_name, :last_name, :email, presence: true
 end
