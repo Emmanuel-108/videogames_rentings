@@ -5,6 +5,7 @@ class CreateVideogames < ActiveRecord::Migration[7.1]
       t.text :description
       t.integer :rating
       t.decimal :price
+      t.references :user
 
       t.timestamps
     end
