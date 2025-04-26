@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgb(5, 25, 54);
+  font-family: 'Jersey 25', sans-serif;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +10,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.color-input {
+  color:rgb(249, 249, 249);
 }
