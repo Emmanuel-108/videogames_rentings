@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.3.5"
 
+# Cloudinary
+gem "cloudinary"
+
 # Devise gem
 gem "devise"
 
