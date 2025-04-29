@@ -1,0 +1,17 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+
+
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="card p-4 " style="min-width: 800px;">
+
+    <h2 class="text-center pb-2 body"><%= '"' + @videogame.name + '"' + " booking information" %></h2>
+    <p class="text-center"><%= @videogame.background_image %></p>
+    <p class="text-center"><%= @videogame.description %></p>
+    <p class="text-center"><%= "Category: " + @videogame.category %></p>
+    <p class="text-center"><%= "Rating: " + @videogame.rating.to_s %></p>
+    <p class="text-center"><%= "Price: " + @videogame.price.to_s %></p>
+    <p class="text-center"><%= "Rented by: " + @videogame.owner.first_name + " " + @videogame.owner.last_name %></p>
+
+  </div>
+</div>
