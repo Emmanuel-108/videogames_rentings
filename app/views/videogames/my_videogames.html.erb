@@ -1,0 +1,36 @@
+<div class="home-container">
+  <h1 class="home-title">My Games</h1>
+
+  <div class="videogames-grid">
+    <% if @my_videogames.any? %>
+      <% @my_videogames.each do |videogame| %>
+        <div class="videogame-card">
+          <%= link_to videogame_path(videogame), class: "card-link" do %>
+            <img src="<%= videogame.background_image %>" alt="<%= videogame.name %>" class="videogame-image">
+            <div class="videogame-info">
+              <h2><%= videogame.name %></h2>
+              <p><strong>Category :</strong> <%= videogame.category %></p>
+              <p><strong>Plateform :</strong> <%= videogame.platform %></p>
+              <p><strong>Rating :</strong> <%= videogame.rating %>/10</p>
+              <p><strong>Price :</strong> <%= number_to_currency(videogame.price, unit: "$") %></p>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= form_with model: videogame, method: :delete, local: true do |form| %>
+              <%= form.submit "Delete", class: "delete-button" %>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    <% else %>
+      <p>You haven't added any games yet.</p>
+    <% end %>
+  </div>
+
+  <div class="add-game-button">
+    <%= link_to "Add a New Game", new_videogame_path, class: "add-button" %>
+  </div>
+
+</div>

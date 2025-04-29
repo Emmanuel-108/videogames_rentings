@@ -1,0 +1,16 @@
+<div class="videogames-container">
+  <% @videogames.each do |videogame| %>
+    <div class="videogame-card">
+      <%= link_to videogame_path(videogame), class: "card-link" do %>
+        <img src="<%= videogame.background_image %>" alt="<%= videogame.name %>" class="videogame-image">
+        <div class="videogame-info">
+          <h2><%= videogame.name %></h2>
+          <p><strong>Category:</strong> <%= videogame.category %></p>
+          <p><strong>Platform:</strong> <%= videogame.platform %></p>
+          <p><strong>Rating:</strong> <%= videogame.rating %>/5</p>
+          <p><strong>Price:</strong> <%= number_to_currency(videogame.price, unit: "$") %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

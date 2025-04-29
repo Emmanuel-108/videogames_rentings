@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
-  belongs_to :customer, class_name: "user", foreign_key: "customer_id"
-  belongs_to :videogame, class_name: "Videogame", foreign_key: "videogame_id"
+  belongs_to :user
+  belongs_to :videogame
+
   validates :start_time, :end_time, presence: true
 
   private

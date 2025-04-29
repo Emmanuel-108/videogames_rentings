@@ -1,17 +1,42 @@
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+<div class="show-container">
+  <div class="show-image">
+    <img src="<%= @videogame.background_image %>" alt="<%= @videogame.name %>">
+  </div>
+
+  <div class="show-info">
+    <h1><%= @videogame.name %></h1>
+    <p><strong>Category :</strong> <%= @videogame.category %></p>
+    <p><strong>Plateforme :</strong> <%= @videogame.platform %></p>
+    <p><strong>Rating :</strong> <%= @videogame.rating %>/10</p>
+    <p><strong>Price :</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
+    <p><%= simple_format(@videogame.description) %></p>
+
+    <div class="actions">
+      <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
+      <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
+    </div>
+
+    <% if current_user == @videogame.owner %>
+      <div class="actions">
+        <%= form_with model: @videogame, method: :delete, local: true do |form| %>
+          <%= form.submit "Delete this game", class: "delete-game-button" %>
+        <% end %>
+      </div>
+    <% end %>
 
 
-<div class="d-flex justify-content-center align-items-center mt-5">
-  <div class="card p-4 " style="min-width: 800px;">
 
-    <h2 class="text-center pb-2 body"><%= '"' + @videogame.name + '"' + " booking information" %></h2>
-    <p class="text-center"><%= @videogame.background_image %></p>
-    <p class="text-center"><%= @videogame.description %></p>
-    <p class="text-center"><%= "Category: " + @videogame.category %></p>
-    <p class="text-center"><%= "Rating: " + @videogame.rating.to_s %></p>
-    <p class="text-center"><%= "Price: " + @videogame.price.to_s %></p>
-    <p class="text-center"><%= "Rented by: " + @videogame.owner.first_name + " " + @videogame.owner.last_name %></p>
+
+    <% if @videogame.bookings.any? %>
+      <div class="bookings-list">
+        <h3>Already booked dates:</h3>
+        <ul>
+          <% @videogame.bookings.each do |booking| %>
+            <li>Du <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
   </div>
 </div>
