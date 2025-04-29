@@ -1,0 +1,101 @@
+.home-container {
+  padding: 40px;
+  background-color: #2e2e2e; // Gris moyen foncé
+  color: #eee;
+  min-height: 100vh;
+}
+
+.home-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.videogames-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.videogame-card {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.videogame-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.videogame-info {
+  padding: 15px;
+  text-align: center;
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+}
+
+.actions {
+  text-align: center;
+  margin: 10px 0 20px;
+}
+
+.delete-button {
+  display: inline-block;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fa5252;
+  }
+}
+
+.add-game-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 10;
+}
+
+.add-button {
+  display: inline-block;
+  background-color: #5c7cfa;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #4c6ef5;
+  }
+}

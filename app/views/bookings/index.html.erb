@@ -1,0 +1,17 @@
+<div class="my-bookings">
+  <h1>My Bookings</h1>
+
+  <% if @bookings.any? %>
+    <ul>
+      <% @bookings.each do |booking| %>
+        <li>
+          <strong><%= booking.videogame.name %></strong> —
+          from <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %>
+          (<%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation ?" }, class: "cancel-link" %>)
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You don't have any bookings yet.</p>
+  <% end %>
+</div>

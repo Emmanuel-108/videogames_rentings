@@ -1,4 +1,9 @@
 class VideogamesController < ApplicationController
+
+  def my_videogames
+    @my_videogames = current_user.videogames
+  end
+
   def index
     @videogames = Videogame.all
   end
@@ -9,8 +14,10 @@ class VideogamesController < ApplicationController
 
   def create
     @videogame = Videogame.new(videogame_params)
+    @videogame.owner = current_user
+
     if @videogame.save
-      redirect_to videogame_path(@videogame)
+      redirect_to root_path, notice: "Game successfully added ! 🎮"
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,13 +39,20 @@ class VideogamesController < ApplicationController
 
   def destroy
     @videogame = Videogame.find(params[:id])
-    @videogame.destroy
-    redirect_to videogames_path, status: :see_other
+    if @videogame.owner == current_user
+      @videogame.destroy
+      redirect_to my_videogames_path, notice: "	Game successfully deleted ! 🎮"
+    else
+      redirect_to root_path, alert: "You don't have permission to delete this game."
+    end
   end
+
+
 
   private
 
   def videogame_params
-    params.require(:videogame).permit(:name, :description, :rating, :price, :photo)
+    params.require(:videogame).permit(:name, :description, :rating, :price, :category, :platform, :background_image)
   end
+
 end

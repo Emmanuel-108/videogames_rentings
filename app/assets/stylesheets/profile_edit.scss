@@ -1,9 +1,4 @@
-@import "navbar";
-@import "alert";
-@import "card";
-@import "button";
-
-.signup-page {
+.login-page {
   background-color: #2e2e2e;
   min-height: 100vh;
   display: flex;
@@ -12,7 +7,7 @@
   padding: 40px;
 }
 
-.signup-container {
+.login-container {
   background-color: #1f1f1f;
   padding: 50px;
   border-radius: 15px;
@@ -28,7 +23,7 @@
   }
 }
 
-.signup-form {
+.login-form {
   .form-group {
     margin-bottom: 25px;
     text-align: left;
@@ -49,7 +44,7 @@
   }
 }
 
-.signup-button {
+.login-button {
   width: 100%;
   padding: 15px;
   background-color: #5c7cfa;
@@ -85,4 +80,22 @@
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 20px;
+}
+
+.back-button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background-color: #5c7cfa;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: #4c6ef5;
+  }
 }

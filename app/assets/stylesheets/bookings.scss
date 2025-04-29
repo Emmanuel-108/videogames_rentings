@@ -1,0 +1,30 @@
+.my-bookings {
+  padding: 40px;
+  background-color: #121212;
+  color: #eee;
+  min-height: 100vh;
+
+  h1 {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 15px;
+  }
+}
+
+.cancel-link {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    color: #fa5252;
+  }
+}

@@ -1,0 +1,48 @@
+.videogames-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  background-color: #121212;
+  min-height: 100vh;
+}
+
+.videogame-card {
+  background-color: #1f1f1f;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  color: #eee;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.videogame-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.videogame-info {
+  padding: 20px;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,10 +1,5 @@
-@import "navbar";
-@import "alert";
-@import "card";
-@import "button";
-
-.signup-page {
-  background-color: #2e2e2e;
+.login-page {
+  background-color: #2e2e2e; // gris moyen-foncé
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -12,12 +7,12 @@
   padding: 40px;
 }
 
-.signup-container {
-  background-color: #1f1f1f;
+.login-container {
+  background-color: #1f1f1f; // Formulaire plus foncé
   padding: 50px;
   border-radius: 15px;
   width: 100%;
-  max-width: 500px;
+  max-width: 500px; // Plus large
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   color: #fff;
   text-align: center;
@@ -28,7 +23,7 @@
   }
 }
 
-.signup-form {
+.login-form {
   .form-group {
     margin-bottom: 25px;
     text-align: left;
@@ -49,7 +44,7 @@
   }
 }
 
-.signup-button {
+.login-button {
   width: 100%;
   padding: 15px;
   background-color: #5c7cfa;
@@ -59,7 +54,6 @@
   font-size: 1.2rem;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  cursor: pointer;
 
   &:hover {
     background-color: #4c6ef5;
