@@ -41,15 +41,19 @@
       </div>
 
       <div class="form-group">
-        <%= form.label :platform, "Plateform" %><br />
+        <%= form.label :platform, "Platform" %><br />
         <%= form.text_field :platform, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :background_image, "Game Image (URL only)" %><br />
+        <%= form.label :background_image, "Game Image (URL only)" %><br>
         <%= form.text_field :background_image, class: "form-control", placeholder: "Example: https://my-image.jpg" %>
       </div>
 
+      <div class="form-group">
+        <%= form.label :photo, "Submit Image" %><br />
+        <%= form.file_field :photo, class: "form-control" %>
+      </div>
 
       <div class="form-group">
         <%= form.submit "Save Games", class: "login-button" %>
