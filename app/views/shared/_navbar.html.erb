@@ -25,7 +25,9 @@
             <%= link_to "My Games", my_videogames_path, class: "nav-link" %>
           </li>
 
-          <!-- Checkout button with cart icon -->
+          <li class="nav-item">
+            <%= link_to "Contact us", contact_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to checkout_path, class: "nav-link d-flex align-items-center" do %>
               <svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,7 +36,7 @@
               <span style="margin-left: 8px;"></span>
             <% end %>
           </li>
-
+          
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>
