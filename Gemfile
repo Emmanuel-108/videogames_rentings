@@ -4,6 +4,7 @@ ruby "3.3.5"
 
 # Cloudinary
 gem "cloudinary"
+gem "activestorage-cloudinary-service"
 
 # Devise gem
 gem "devise"
