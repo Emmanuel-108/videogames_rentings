@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root "videogames#index"
 
+
   resources :videogames do
     resources :bookings, only: [:new, :create]
   end
