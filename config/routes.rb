@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
+  get 'checkout/show'
+  get 'checkout/confirm_payment'
   devise_for :users
-  # root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  root to: "videogames#index"
+  root "videogames#index"
+
 
   resources :videogames do
     resources :bookings, only: [:new, :create]
@@ -16,5 +14,11 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :destroy]
   resource :profile, only: [:edit, :update]
+
   get "/my_videogames", to: "videogames#my_videogames"
+
+  get 'checkout', to: 'checkout#show'
+  post 'confirm_payment', to: 'checkout#confirm_payment'
+
+
 end

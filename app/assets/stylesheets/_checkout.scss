@@ -1,0 +1,81 @@
+.checkout-page {
+  background-color: #2e2e2e;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.checkout-container {
+  background-color: #1f1f1f; // ← Couleur sombre élégante
+  padding: 60px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 30px;
+    font-size: 2.6rem;
+  }
+}
+
+
+
+.checkout-form {
+  .form-group {
+    margin-bottom: 25px;
+    text-align: left;
+  }
+
+  .row {
+    display: flex;
+    gap: 20px;
+
+    .col-md-6 {
+      flex: 1;
+    }
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 15px;
+    background: #2c2c2c;
+    border: none;
+    border-radius: 8px;
+    color: #eee;
+    font-size: 1.1rem;
+
+    &:focus {
+      background: #3a3a3a;
+    }
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #5c7cfa;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #4c6ef5;
+    }
+  }
+
+  .alert-danger {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+}
