@@ -1,12 +1,13 @@
 <div class="show-container">
   <div class="show-image">
     <img src="<%= @videogame.background_image %>" alt="<%= @videogame.name %>">
+    <%= image_tag @videogame.photo if @videogame.photo.attached? %>
   </div>
 
   <div class="show-info">
     <h1><%= @videogame.name %></h1>
     <p><strong>Category :</strong> <%= @videogame.category %></p>
-    <p><strong>Plateforme :</strong> <%= @videogame.platform %></p>
+    <p><strong>Platforme :</strong> <%= @videogame.platform %></p>
     <p><strong>Rating :</strong> <%= @videogame.rating %>/10</p>
     <p><strong>Price :</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
     <p><%= simple_format(@videogame.description) %></p>
@@ -23,9 +24,6 @@
         <% end %>
       </div>
     <% end %>
-
-
-
 
     <% if @videogame.bookings.any? %>
       <div class="bookings-list">
