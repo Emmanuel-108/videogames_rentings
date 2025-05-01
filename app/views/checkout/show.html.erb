@@ -1,34 +1,66 @@
 <div class="checkout-page">
-  <div class="checkout-container wide">
-    <h1>Checkout</h1>
+  <div class="checkout-wrapper">
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
+    <!-- LEFT: Cart summary -->
+    <div class="cart-panel">
+      <h2>Your Cart</h2>
 
-    <%= form_with url: confirm_payment_path, method: :post, local: true, html: { class: "checkout-form" } do |form| %>
-      <div class="form-group">
-        <%= form.label :card_number, "Card Number" %>
-        <%= form.text_field :card_number, class: "form-control", placeholder: "1234 5678 9012 3456" %>
-      </div>
+      <% if @bookings.any? %>
+        <% @bookings.each do |booking| %>
+          <% days = (booking.end_time.to_date - booking.start_time.to_date).to_i + 1 %>
+          <div class="cart-item">
+            <div class="item-info">
+              <strong><%= booking.videogame.name %></strong><br>
+              <small><%= days %> day(s) × $<%= booking.videogame.price %> = $<%= booking.videogame.price * days %></small>
+            </div>
+            <div class="item-action">
+              <%= button_to "Remove", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn-delete" %>
+            </div>
+          </div>
+        <% end %>
 
-      <div class="row">
-        <div class="col-md-6 form-group">
-          <%= form.label :expiration, "Expiration (MM/YY)" %>
-          <%= form.text_field :expiration, class: "form-control", placeholder: "09/26" %>
+        <div class="cart-total">
+          <strong>Total to pay:</strong> $<%= @total_price %>
         </div>
+      <% else %>
+        <p>Your cart is empty.</p>
+      <% end %>
+    </div>
 
-        <div class="col-md-6 form-group">
-          <%= form.label :cvv, "CVV" %>
-          <%= form.text_field :cvv, class: "form-control", placeholder: "123" %>
-        </div>
-      </div>
+    <!-- RIGHT: Payment form -->
+    <div class="payment-panel">
+      <h2>Payment</h2>
 
-      <div class="form-group">
-        <%= form.submit "Confirm Payment", class: "btn-submit" %>
-      </div>
-    <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% elsif flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+
+      <% if @bookings.any? %>
+        <%= form_with url: confirm_payment_path, method: :post, local: true, html: { class: "checkout-form" } do |form| %>
+          <div class="form-group">
+            <%= form.label :card_number, "Card Number" %>
+            <%= form.text_field :card_number, class: "form-control", placeholder: "1234 5678 9012 3456" %>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <%= form.label :expiration, "Expiration (MM/YY)" %>
+              <%= form.text_field :expiration, class: "form-control", placeholder: "09/26" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= form.label :cvv, "CVV" %>
+              <%= form.text_field :cvv, class: "form-control", placeholder: "123" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= form.submit "Confirm Payment", class: "btn-submit" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

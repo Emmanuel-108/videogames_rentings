@@ -28,3 +28,95 @@
     color: #fa5252;
   }
 }
+.my-bookings {
+  padding: 30px;
+
+  .bookings-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .booking-card {
+    display: flex;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .booking-image img {
+      width: 120px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .booking-info {
+      padding: 15px;
+      flex-grow: 1;
+
+      h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+
+      .status {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .status.pending {
+        color: #fadb14;
+      }
+
+      .status.accepted {
+        color: #52c41a;
+      }
+
+      .status.rejected {
+        color: #ff4d4f;
+      }
+
+      .cancel-link {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #ff6b6b;
+        text-decoration: underline;
+
+        &:hover {
+          color: #ff8787;
+        }
+      }
+    }
+  }
+}
+
+.booking-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.booking-status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.booking-status.unpaid {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.booking-status.paid {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.booking-status.accepted {
+  background-color: #cce5ff;
+  color: #004085;
+}

@@ -1,16 +1,16 @@
 <div class="page-background">
   <div class="booking-container">
-    <h1>Réserver "<%= @videogame.name %>"</h1>
+    <h1>Boooking "<%= @videogame.name %>"</h1>
 
     <%= form_with(model: [@videogame, @booking], local: true) do |form| %>
       <div class="form-group">
         <%= form.label :start_time, "Start Date" %>
-        <%= form.date_field :start_time, class: "form-control" %>
+        <%= form.date_field :start_time, class: "form-control", min: Date.today %>
       </div>
 
       <div class="form-group">
         <%= form.label :end_time, "End Date" %>
-        <%= form.date_field :end_time, class: "form-control" %>
+        <%= form.date_field :end_time, class: "form-control", min: Date.today %>
       </div>
 
       <div class="form-actions">

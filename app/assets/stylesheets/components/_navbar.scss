@@ -61,3 +61,30 @@
   height: 40px;
   width: auto;
 }
+
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.checkout-icon {
+  height: 20px;
+  width: 20px;
+  margin-top: 2px;
+}
+
+.nav-link .checkout-icon {
+  vertical-align: middle;
+}
