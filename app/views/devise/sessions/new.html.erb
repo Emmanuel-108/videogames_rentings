@@ -1,6 +1,7 @@
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
 <div class="login-page">
-  <div class="login-container">
-    <h1>Sign In to Your Account</h1>
+  <div class="login-container body">
+    <h1 class="body">Sign In to Your Account</h1>
 
     <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |form| %>
 
@@ -26,7 +27,7 @@
       </div>
 
       <div class="form-group">
-        <%= form.submit "Sign In", class: "login-button" %>
+        <%= form.submit "Sign In", class: "login-button body" %>
       </div>
 
       <div class="form-links">

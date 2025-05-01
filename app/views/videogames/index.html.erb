@@ -8,8 +8,8 @@
         <% elsif videogame.background_image.present? %>
           <%= image_tag videogame.background_image, alt: videogame.name, class: "videogame-image" %>
         <% end %>
-        <div class="videogame-info">
-          <h2><%= videogame.name %></h2>
+        <div class="videogame-info body">
+          <h2 class="body"><%= videogame.name %></h2>
           <p><strong>Category:</strong> <%= videogame.category %></p>
           <p><strong>Platform:</strong> <%= videogame.platform %></p>
           <p><strong>Rating:</strong> <%= videogame.rating %>/5</p>
