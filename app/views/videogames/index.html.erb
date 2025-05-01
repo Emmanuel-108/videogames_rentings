@@ -1,6 +1,7 @@
-<div class="videogames-container">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
+<div class="videogames-container body">
   <% @videogames.each do |videogame| %>
-    <div class="videogame-card">
+    <div class="videogame-card body">
       <%= link_to videogame_path(videogame), class: "card-link" do %>
         <% if videogame.photo.attached? %>
           <%= image_tag videogame.photo, alt: videogame.name, class: "videogame-image" %>

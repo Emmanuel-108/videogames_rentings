@@ -1,6 +1,7 @@
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
 <nav class="navbar-lewagon navbar navbar-expand-lg">
   <div class="container-fluid">
-    <%= link_to videogames_path, class: "navbar-brand d-flex align-items-center" do %>
+    <%= link_to videogames_path, class: "navbar-brand d-flex align-items-center body" do %>
       <%= image_tag asset_path("gamevault_logo.png"), alt: "GameVault logo", class: "navbar-logo" %>
       <span class="ms-2">GameVault</span>
     <% end %>
@@ -9,7 +10,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse body" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -45,8 +46,6 @@
               <% end %>
             <% end %> <!-- 👈 fermeture du link_to -->
           </li>
-
-
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>
