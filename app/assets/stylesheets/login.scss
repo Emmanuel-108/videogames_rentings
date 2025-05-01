@@ -15,18 +15,18 @@
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   color: #fff;
   text-align: center;
-  clip-path: polygon(
-    0% 24px, 8px 24px, 8px 16px, 16px 16px, 16px 8px, 24px 8px, 24px 0%,
-    calc(100% - 24px) 0%, calc(100% - 24px) 8px, calc(100% - 16px) 8px,
-    calc(100% - 16px) 16px, calc(100% - 8px) 16px, calc(100% - 8px) 24px, 100% 24px,
-    100% calc(100% - 24px), calc(100% - 8px) calc(100% - 24px),
-    calc(100% - 8px) calc(100% - 16px), calc(100% - 16px) calc(100% - 16px),
-    calc(100% - 16px) calc(100% - 8px), calc(100% - 24px) calc(100% - 8px),
-    calc(100% - 24px) 100%,
-    24px 100%, 24px calc(100% - 8px), 16px calc(100% - 8px),
-    16px calc(100% - 16px), 8px calc(100% - 16px), 8px calc(100% - 24px),
-    0% calc(100% - 24px)
-  );
+  // clip-path: polygon(
+  //   0% 24px, 8px 24px, 8px 16px, 16px 16px, 16px 8px, 24px 8px, 24px 0%,
+  //   calc(100% - 24px) 0%, calc(100% - 24px) 8px, calc(100% - 16px) 8px,
+  //   calc(100% - 16px) 16px, calc(100% - 8px) 16px, calc(100% - 8px) 24px, 100% 24px,
+  //   100% calc(100% - 24px), calc(100% - 8px) calc(100% - 24px),
+  //   calc(100% - 8px) calc(100% - 16px), calc(100% - 16px) calc(100% - 16px),
+  //   calc(100% - 16px) calc(100% - 8px), calc(100% - 24px) calc(100% - 8px),
+  //   calc(100% - 24px) 100%,
+  //   24px 100%, 24px calc(100% - 8px), 16px calc(100% - 8px),
+  //   16px calc(100% - 16px), 8px calc(100% - 16px), 8px calc(100% - 24px),
+  //   0% calc(100% - 24px)
+  // );
 
 
   h1 {
