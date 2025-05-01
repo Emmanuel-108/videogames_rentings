@@ -1,6 +1,5 @@
 .login-page {
-  background-color: #2e2e2e; // gris moyen-foncé
-  min-height: 100vh;
+  background-color: #2e2e2e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,14 +7,27 @@
 }
 
 .login-container {
-  background-color: #1f1f1f; // Formulaire plus foncé
+  background-color: #1f1f1f;
   padding: 50px;
   border-radius: 15px;
   width: 100%;
-  max-width: 500px; // Plus large
+  max-width: 500px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   color: #fff;
   text-align: center;
+  clip-path: polygon(
+    0% 24px, 8px 24px, 8px 16px, 16px 16px, 16px 8px, 24px 8px, 24px 0%,
+    calc(100% - 24px) 0%, calc(100% - 24px) 8px, calc(100% - 16px) 8px,
+    calc(100% - 16px) 16px, calc(100% - 8px) 16px, calc(100% - 8px) 24px, 100% 24px,
+    100% calc(100% - 24px), calc(100% - 8px) calc(100% - 24px),
+    calc(100% - 8px) calc(100% - 16px), calc(100% - 16px) calc(100% - 16px),
+    calc(100% - 16px) calc(100% - 8px), calc(100% - 24px) calc(100% - 8px),
+    calc(100% - 24px) 100%,
+    24px 100%, 24px calc(100% - 8px), 16px calc(100% - 8px),
+    16px calc(100% - 16px), 8px calc(100% - 16px), 8px calc(100% - 24px),
+    0% calc(100% - 24px)
+  );
+
 
   h1 {
     margin-bottom: 30px;
