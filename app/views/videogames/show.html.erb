@@ -1,7 +1,10 @@
 <div class="show-container">
   <div class="show-image">
-    <img src="<%= @videogame.background_image %>" alt="<%= @videogame.name %>">
-    <%= image_tag @videogame.photo if @videogame.photo.attached? %>
+    <% if @videogame.photo.attached? %>
+      <%= image_tag @videogame.photo, alt: @videogame.name %>
+    <% elsif @videogame.background_image.present? %>
+      <%= image_tag @videogame.background_image, alt: @videogame.name %>
+    <% end %>
   </div>
 
   <div class="show-info">
@@ -30,7 +33,7 @@
         <h3>Already booked dates:</h3>
         <ul>
           <% @videogame.bookings.each do |booking| %>
-            <li>Du <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %></li>
+            <li>From <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %></li>
           <% end %>
         </ul>
       </div>
