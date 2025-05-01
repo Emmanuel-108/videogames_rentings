@@ -43,7 +43,6 @@ games.each do |game_data|
 
   # Create videogame record
   Videogame.create!(
-    owner: user,
     name: game_name,
     description: game_description,
     rating: game_rating,

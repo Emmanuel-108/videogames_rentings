@@ -2,15 +2,24 @@
   <h1>My Bookings</h1>
 
   <% if @bookings.any? %>
-    <ul>
+    <div class="bookings-grid">
       <% @bookings.each do |booking| %>
-        <li>
-          <strong><%= booking.videogame.name %></strong> —
-          from <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %>
-          (<%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation ?" }, class: "cancel-link" %>)
-        </li>
+        <div class="booking-card">
+          <div class="booking-image">
+            <%= image_tag booking.videogame.background_image, alt: booking.videogame.name %>
+          </div>
+
+          <div class="booking-info">
+            <h3><%= booking.videogame.name %></h3>
+            <p><strong>Dates:</strong> <%= l(booking.start_time, format: :long) %> → <%= l(booking.end_time, format: :long) %></p>
+
+            <p><strong>Status:</strong> <span class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></span></p>
+
+            <%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation?" }, class: "cancel-link" %>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
   <% else %>
     <p>You don't have any bookings yet.</p>
   <% end %>
