@@ -29,15 +29,23 @@
           <li class="nav-item">
             <%= link_to "Contact us", contact_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to checkout_path, class: "nav-link d-flex align-items-center" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.35 6.72A1 1 0 007.6 21h8.8a1 1 0 001-1.28L17 13M9 21h6" />
-              </svg>
-              <span style="margin-left: 8px;"></span>
-            <% end %>
-          </li>
 
+          <li class="nav-item">
+            <%= link_to checkout_path, class: "nav-link d-flex align-items-center position-relative" do %>
+              <span class="d-inline-flex align-items-center" style="height: 100%;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="checkout-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.35 6.72A1 1 0 007.6 21h8.8a1 1 0 001-1.28L17 13M9 21h6" />
+                </svg>
+              </span>
+
+              <% cart_count = current_user.bookings.where(status: ["accepted", "unpaid"]).count %>
+              <% if cart_count > 0 %>
+                <span class="cart-badge">
+                  <%= cart_count %>
+                </span>
+              <% end %>
+            <% end %> <!-- 👈 fermeture du link_to -->
+          </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "avatar.png", class: "avatar", alt: "dropdown menu" %>

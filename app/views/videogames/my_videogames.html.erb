@@ -10,10 +10,10 @@
             <img src="<%= videogame.background_image %>" alt="<%= videogame.name %>" class="videogame-image">
             <div class="videogame-info">
               <h2><%= videogame.name %></h2>
-              <p><strong>Category :</strong> <%= videogame.category %></p>
-              <p><strong>Platform :</strong> <%= videogame.platform %></p>
-              <p><strong>Rating :</strong> <%= videogame.rating %>/10</p>
-              <p><strong>Price :</strong> <%= number_to_currency(videogame.price, unit: "$") %></p>
+              <p><strong>Category:</strong> <%= videogame.category %></p>
+              <p><strong>Platform:</strong> <%= videogame.platform %></p>
+              <p><strong>Rating:</strong> <%= videogame.rating %>/10</p>
+              <p><strong>Price:</strong> <%= number_to_currency(videogame.price, unit: "$") %></p>
             </div>
           <% end %>
 
@@ -22,8 +22,27 @@
               <%= form.submit "Delete", class: "delete-button" %>
             <% end %>
           </div>
-
         </div>
+
+        <% if videogame.bookings.any? %>
+          <div class="booking-requests">
+            <h4>Booking Requests:</h4>
+            <% videogame.bookings.each do |booking| %>
+              <div class="booking-request">
+                <p>
+                  <strong><%= booking.user.first_name %></strong> requested from
+                  <%= booking.start_time.strftime("%b %d") %> to
+                  <%= booking.end_time.strftime("%b %d") %> –
+                  <strong>Status:</strong> <span class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></span>
+                </p>
+                <% if booking.status == "pending" %>
+                  <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success btn-sm" %>
+                  <%= button_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-danger btn-sm" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     <% else %>
       <p>You haven't added any games yet.</p>
@@ -33,5 +52,4 @@
   <div class="add-game-button">
     <%= link_to "Add a New Game", new_videogame_path, class: "add-button" %>
   </div>
-
 </div>
