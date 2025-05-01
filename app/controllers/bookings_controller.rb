@@ -14,8 +14,17 @@ class BookingsController < ApplicationController
     @videogame = Videogame.find(params[:videogame_id])
     @booking = @videogame.bookings.build(booking_params)
     @booking.user = current_user
+
+    if @videogame.user_id.nil?
+      @booking.status = "unpaid"
+    else
+      @booking.status = "pending"
+    end
+
+
     if @booking.save
-      redirect_to videogame_path(@booking.videogame), notice: "Your rental has been successfully created ! 🎮"
+      redirect_to checkout_path, notice: "Booking added to your cart."
+      return
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,6 +35,27 @@ class BookingsController < ApplicationController
     @booking.destroy
     redirect_to bookings_path, notice: "Booking successfully cancelled!"
   end
+
+  def accept
+    booking = Booking.find(params[:id])
+    if booking.videogame.owner == current_user
+      booking.update(status: "accepted")
+      redirect_to my_videogames_path, notice: "Booking accepted."
+    else
+      redirect_to root_path, alert: "Unauthorized."
+    end
+  end
+
+  def reject
+    booking = Booking.find(params[:id])
+    if booking.videogame.owner == current_user
+      booking.update(status: "rejected")
+      redirect_to my_videogames_path, notice: "Booking rejected."
+    else
+      redirect_to root_path, alert: "Unauthorized."
+    end
+  end
+
 
   private
 
