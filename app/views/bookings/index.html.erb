@@ -7,7 +7,12 @@
       <% @bookings.each do |booking| %>
         <div class="booking-card">
           <div class="booking-image">
-            <%= image_tag booking.videogame.background_image, alt: booking.videogame.name %>
+            <%#= image_tag booking.videogame.background_image, alt: booking.videogame.name %>
+            <% if booking.videogame.photo.attached? %>
+              <%= image_tag booking.videogame.photo, alt: booking.videogame.name %>
+            <% elsif booking.videogame.background_image.present? %>
+              <%= image_tag booking.videogame.background_image, alt: booking.videogame.name %>
+            <% end %>
           </div>
 
           <div class="booking-info">

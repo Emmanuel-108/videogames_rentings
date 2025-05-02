@@ -7,7 +7,11 @@
       <% @my_videogames.each do |videogame| %>
         <div class="videogame-card">
           <%= link_to videogame_path(videogame), class: "card-link" do %>
-            <img src="<%= videogame.background_image %>" alt="<%= videogame.name %>" class="videogame-image">
+          <% if videogame.photo.attached? %>
+            <%= image_tag videogame.photo, alt: videogame.name, class: "videogame-image" %>
+          <% elsif videogame.background_image.present? %>
+            <%= image_tag videogame.background_image, alt: videogame.name, class: "videogame-image" %>
+          <% end %>
             <div class="videogame-info">
               <h2><%= videogame.name %></h2>
               <p><strong>Category:</strong> <%= videogame.category %></p>
