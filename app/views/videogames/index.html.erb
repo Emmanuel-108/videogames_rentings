@@ -1,9 +1,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <nav class="sub-navbar">
-  <ul class="sub-nav-links">
-    <li class="buttonfilter"><i class="fa-solid fa-sort"></i> Filters</li>
-  </ul>
+  <div class="sub-nav-links">
+    <button class="buttonfilter" data-bs-toggle="modal" data-bs-target="#filterModal">
+      <i class="fa-solid fa-filter"></i> Filters
+    </button>
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content filter-container">
+          <div class="modal-header">
+            <h5 class="modal-title body" id="filterModalLabel">Filter Options</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body filter-style">
+            <form id="filterForm">
+              <div class="mb-3">
+                <label for="priceRange" class="form-label">Price Range</label>
+                <input type="range" class="form-range" id="priceRange" min="0" max="1000" step="10">
+                <p>Price: $<span id="priceValue">0</span></p>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Categories</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="category1" id="category1">
+                  <label class="form-check-label" for="category1">
+                    Category 1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="category2" id="category2">
+                  <label class="form-check-label" for="category2">
+                    Category 2
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="category3" id="category3">
+                  <label class="form-check-label" for="category3">
+                    Category 3
+                  </label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="buttonfilter">Apply Filters</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+
 
 <div class="videogames-container body">
   <% @videogames.each do |videogame| %>
@@ -25,3 +73,6 @@
     </div>
   <% end %>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
