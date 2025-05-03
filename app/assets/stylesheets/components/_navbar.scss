@@ -88,3 +88,16 @@
 .nav-link .checkout-icon {
   vertical-align: middle;
 }
+.badge-notif {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1;
+  z-index: 1000;
+}
