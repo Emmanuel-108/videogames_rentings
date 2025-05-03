@@ -5,9 +5,12 @@ class CheckoutController < ApplicationController
     @bookings = current_user.bookings.where(status: ["accepted", "unpaid"]).includes(:videogame)
 
     @total_price = @bookings.sum do |b|
+      next 0 unless b.videogame.present?
+
       days = (b.end_time.to_date - b.start_time.to_date).to_i + 1
       b.videogame.price * days
     end
+
   end
 
   def confirm_payment

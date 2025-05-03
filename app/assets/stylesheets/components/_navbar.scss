@@ -94,7 +94,6 @@
   padding-top: 20px;
   font-family: 'Jersey 25';
 
-
   .sub-nav-links {
     list-style: none;
     display: flex;
@@ -114,4 +113,16 @@
       }
     }
   }
+.badge-notif {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1;
+  z-index: 1000;
 }

@@ -1,22 +1,32 @@
 <div class="checkout-page">
   <div class="checkout-wrapper">
 
-    <!-- LEFT: Cart summary -->
     <div class="cart-panel">
       <h2>Your Cart</h2>
 
       <% if @bookings.any? %>
         <% @bookings.each do |booking| %>
-          <% days = (booking.end_time.to_date - booking.start_time.to_date).to_i + 1 %>
-          <div class="cart-item">
-            <div class="item-info">
-              <strong><%= booking.videogame.name %></strong><br>
-              <small><%= days %> day(s) × $<%= booking.videogame.price %> = $<%= booking.videogame.price * days %></small>
+          <% if booking.videogame.present? %>
+            <% days = (booking.end_time.to_date - booking.start_time.to_date).to_i + 1 %>
+            <div class="cart-item">
+              <div class="item-info">
+                <strong><%= booking.videogame.name %></strong><br>
+                <small><%= days %> day(s) × $<%= booking.videogame.price %> = $<%= booking.videogame.price * days %></small>
+              </div>
+              <div class="item-action">
+                <%= button_to "Remove", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn-delete" %>
+              </div>
             </div>
-            <div class="item-action">
-              <%= button_to "Remove", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn-delete" %>
+          <% else %>
+            <div class="cart-item error">
+              <div class="item-info">
+                <em>This booking is missing its videogame (possibly deleted).</em>
+              </div>
+              <div class="item-action">
+                <%= button_to "Remove", booking_path(booking), method: :delete, data: { confirm: "Delete this broken booking?" }, class: "btn-delete" %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
 
         <div class="cart-total">
@@ -27,7 +37,6 @@
       <% end %>
     </div>
 
-    <!-- RIGHT: Payment form -->
     <div class="payment-panel">
       <h2>Payment</h2>
 
