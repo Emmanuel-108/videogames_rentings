@@ -1,13 +1,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
+
 <div class="my-bookings body">
   <h1 class="body">My Bookings</h1>
 
   <% if @bookings.any? %>
     <div class="bookings-grid">
       <% @bookings.each do |booking| %>
+        <% next unless booking.videogame.present? %>
+
         <div class="booking-card">
           <div class="booking-image">
-            <%#= image_tag booking.videogame.background_image, alt: booking.videogame.name %>
             <% if booking.videogame.photo.attached? %>
               <%= image_tag booking.videogame.photo, alt: booking.videogame.name %>
             <% elsif booking.videogame.background_image.present? %>
@@ -18,9 +20,11 @@
           <div class="booking-info">
             <h3><%= booking.videogame.name %></h3>
             <p><strong>Dates:</strong> <%= l(booking.start_time, format: :long) %> → <%= l(booking.end_time, format: :long) %></p>
-
-            <p><strong>Status:</strong> <span class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></span></p>
-
+            <p><strong>Status:</strong>
+              <span class="booking-status <%= booking.status %>">
+                <%= booking.status.capitalize %>
+              </span>
+            </p>
             <%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation?" }, class: "cancel-link" %>
           </div>
         </div>
