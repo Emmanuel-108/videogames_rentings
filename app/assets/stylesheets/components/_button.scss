@@ -1,6 +1,6 @@
 .button {
-  padding: 0.75rem 1.5rem;
-  background-color: #bd0802;
+  padding: 0.5rem 1.25rem;
+  background-color: #e47200;
   color: #f9f9f9;
   border: none;
   border-radius: 0.5rem;
@@ -10,7 +10,30 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #e60e06;
+    background-color: #f67e04;
+    transform: scale(1.05);
+    color: #ffffff;
+  }
+
+  &:active {
+    background-color: #3730a3;
+    transform: scale(0.98);
+  }
+}
+
+.buttonfilter {
+  padding: 0.5rem 0.75rem;
+  background-color: #e47200;
+  color: #f9f9f9;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #f67e04;
     transform: scale(1.05);
     color: #ffffff;
   }

@@ -1,7 +1,12 @@
 class VideogamesController < ApplicationController
   def my_videogames
     @my_videogames = current_user.videogames
+
+    @pending_requests_count = @my_videogames.sum do |videogame|
+      videogame.bookings.where(status: "pending").count
+    end
   end
+
 
   def index
     @videogames = Videogame.all
