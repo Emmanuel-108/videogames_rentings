@@ -92,17 +92,3 @@ input.form-control.disabled-field {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-input:disabled::placeholder {
-  color: red;
-}
-
-input:disabled {
-  background-color: red;
-  box-shadow: none;
-  opacity: 0.5;
-}
-
-input[disabled] {
-  background-color: red;
-}
