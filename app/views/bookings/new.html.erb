@@ -2,6 +2,18 @@
   <div class="booking-container">
     <h1>Boooking "<%= @videogame.name %>"</h1>
 
+    <% if @booking.errors.any? %>
+      <div class="custom-alert">
+        <h4>There were some errors with your booking:</h4>
+        <ul>
+          <% @booking.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
     <%= form_with(model: [@videogame, @booking], local: true) do |form| %>
       <div class="form-group">
         <%= form.label :start_time, "Start Date" %>
