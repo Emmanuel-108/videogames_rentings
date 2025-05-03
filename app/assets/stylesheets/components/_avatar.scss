@@ -9,6 +9,18 @@
   animation: neon-glow-green 2s infinite alternate;
 }
 
+.avatar-profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #2e2e2e;
+  border: 2px solid #36b37e;
+  box-shadow: 0 0 15px rgba(54, 179, 126, 0.8);
+  animation: neon-glow-green 2s infinite alternate;
+  margin-bottom: 10px;
+}
+
 @keyframes neon-glow-green {
   from {
     box-shadow: 0 0 10px rgba(54, 179, 126, 0.5), 0 0 20px rgba(54, 179, 126, 0.3);
