@@ -1,60 +1,86 @@
-<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
 <div class="home-container body">
-
   <h1 class="home-title body">My Games</h1>
 
-  <div class="videogames-grid">
-    <% if @my_videogames.any? %>
-      <% @my_videogames.each do |videogame| %>
-        <div class="videogame-card">
-          <%= link_to videogame_path(videogame), class: "card-link" do %>
-          <% if videogame.photo.attached? %>
-            <%= image_tag videogame.photo, alt: videogame.name, class: "videogame-image" %>
-          <% elsif videogame.background_image.present? %>
-            <%= image_tag videogame.background_image, alt: videogame.name, class: "videogame-image" %>
-          <% end %>
-            <div class="videogame-info">
-              <h2><%= videogame.name %></h2>
-              <p><strong>Category:</strong> <%= videogame.category %></p>
-              <p><strong>Platform:</strong> <%= videogame.platform %></p>
-              <p><strong>Rating:</strong> <%= videogame.rating %>/10</p>
-              <p><strong>Price:</strong> <%= number_to_currency(videogame.price, unit: "$") %></p>
-            </div>
-          <% end %>
+  <div class="two-columns-layout">
+    <!-- Colonne gauche : Mes jeux -->
+    <div class="left-column">
+      <div class="videogames-grid">
+        <% if @my_videogames.any? %>
+          <% @my_videogames.each do |videogame| %>
+            <div class="videogame-card">
+              <%= link_to videogame_path(videogame), class: "card-link" do %>
+                <% if videogame.photo.attached? %>
+                  <%= image_tag videogame.photo, alt: videogame.name, class: "videogame-image" %>
+                <% elsif videogame.background_image.present? %>
+                  <%= image_tag videogame.background_image, alt: videogame.name, class: "videogame-image" %>
+                <% end %>
+                <div class="videogame-info">
+                  <h2><%= videogame.name %></h2>
+                  <p><strong>Category:</strong> <%= videogame.category %></p>
+                  <p><strong>Platform:</strong> <%= videogame.platform %></p>
+                  <p><strong>Rating:</strong> <%= videogame.rating %>/10</p>
+                  <p><strong>Price:</strong> <%= number_to_currency(videogame.price, unit: "$") %></p>
+                </div>
+              <% end %>
 
-          <div class="actions">
-            <%= form_with model: videogame, method: :delete, local: true do |form| %>
-              <%= form.submit "Delete", class: "delete-button" %>
-            <% end %>
-          </div>
-        </div>
-
-        <% if videogame.bookings.any? %>
-          <div class="booking-requests">
-            <h4>Booking Requests:</h4>
-            <% videogame.bookings.each do |booking| %>
-              <div class="booking-request">
-                <p>
-                  <strong><%= booking.user.first_name %></strong> requested from
-                  <%= booking.start_time.strftime("%b %d") %> to
-                  <%= booking.end_time.strftime("%b %d") %> –
-                  <strong>Status:</strong> <span class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></span>
-                </p>
-                <% if booking.status == "pending" %>
-                  <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success btn-sm" %>
-                  <%= button_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-danger btn-sm" %>
+              <div class="actions">
+                <%= form_with model: videogame, method: :delete, local: true do |form| %>
+                  <%= form.submit "Delete", class: "delete-button" %>
                 <% end %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>You haven't added any games yet.</p>
         <% end %>
-      <% end %>
-    <% else %>
-      <p>You haven't added any games yet.</p>
-    <% end %>
-  </div>
+      </div>
 
-  <div class="add-game-button">
-    <%= link_to "Add a New Game", new_videogame_path, class: "add-button" %>
+      <div class="add-game-button">
+        <%= link_to "Add a New Game", new_videogame_path, class: "add-button" %>
+      </div>
+    </div>
+
+    <!-- Colonne droite : Booking Requests -->
+    <div class="right-column">
+      <div class="all-booking-requests-card">
+        <h2>Booking Requests</h2>
+
+        <% bookings = @my_videogames.map(&:bookings).flatten.select(&:present?) %>
+
+        <% if bookings.any? %>
+          <% bookings.each do |booking| %>
+            <div class="booking-request">
+              <span class="close-x" onclick="this.parentElement.style.display='none'" title="Hide this request">×</span>
+
+              <div class="booking-header">
+                <p>
+                  <strong><%= booking.user.first_name %></strong> requested to rent
+                  <strong><%= booking.videogame.name %></strong> from
+                  <%= booking.start_time.strftime("%b %d") %> to
+                  <%= booking.end_time.strftime("%b %d") %>
+                </p>
+              </div>
+
+              <p>
+                <strong>Status:</strong>
+                <span class="booking-status <%= booking.status %>">
+                  <%= booking.status.capitalize %>
+                </span>
+              </p>
+
+              <% if booking.status == "pending" %>
+                <div class="booking-buttons">
+                  <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success btn-sm" %>
+                  <%= button_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-danger btn-sm" %>
+                </div>
+              <% end %>
+
+            </div>
+          <% end %>
+        <% else %>
+          <p class="no-booking-message">No booking requests yet.</p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

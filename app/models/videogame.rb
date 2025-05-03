@@ -21,6 +21,14 @@ class Videogame < ApplicationRecord
   validates :rating, presence: true, numericality: { only_integer: false, greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
   validate :only_one_image
 
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   private
 
   def set_defaults

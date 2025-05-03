@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.3.5"
 
+# PG Seach
+gem "pg_search"
+
 # Cloudinary
 gem "cloudinary"
 gem "activestorage-cloudinary-service"
@@ -21,7 +24,6 @@ gem "pg", "~> 1.1"
 
 # 'httparty'
 gem 'httparty'
-
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
