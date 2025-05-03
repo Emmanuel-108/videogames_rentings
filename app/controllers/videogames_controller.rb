@@ -1,11 +1,14 @@
 class VideogamesController < ApplicationController
-
   def my_videogames
     @my_videogames = current_user.videogames
   end
 
   def index
     @videogames = Videogame.all
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR description ILIKE :query"
+      @videogames = @videogames.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def new
