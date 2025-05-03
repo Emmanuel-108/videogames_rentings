@@ -26,7 +26,8 @@ class Booking < ApplicationRecord
     return unless videogame && start_time && end_time
 
     overlap = Booking.where(videogame_id: videogame.id)
-                     .where.not(id: id) # Ignore self in case of update
+                     .where.not(id: id)
+                     .where(status: ['pending', 'accepted']) # ← On filtre ici
                      .where("start_time < ? AND end_time > ?", end_time, start_time)
                      .exists?
 
