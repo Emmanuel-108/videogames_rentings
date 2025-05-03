@@ -20,7 +20,7 @@
       <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
     </div>
 
-    <% if current_user == @videogame.owner %>
+    <% if current_user && @videogame.owner == current_user %>
       <div class="actions">
         <%= form_with model: @videogame, method: :delete, local: true do |form| %>
           <%= form.submit "Delete this game", class: "delete-game-button" %>
@@ -28,16 +28,20 @@
       </div>
     <% end %>
 
-    <% if @videogame.bookings.any? %>
-      <div class="bookings-list">
-        <h3>Already booked dates:</h3>
-        <ul>
-          <% @videogame.bookings.each do |booking| %>
-            <li>From <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %></li>
-          <% end %>
-        </ul>
-      </div>
+    <% if current_user %>
+      <% user_bookings = @videogame.bookings.where(user: current_user) %>
+      <% if user_bookings.any? %>
+        <div class="bookings-list">
+          <h3>Your booked dates:</h3>
+          <ul>
+            <% user_bookings.each do |booking| %>
+              <li>From <%= l(booking.start_time, format: :long) %> to <%= l(booking.end_time, format: :long) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
+
 
   </div>
 </div>
