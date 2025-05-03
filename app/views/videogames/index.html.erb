@@ -1,6 +1,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
 <nav class="sub-navbar">
   <ul class="sub-nav-links">
+  <div class="col-sm-2">
+    <%= form_with url: videogames_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control searchbar",
+            placeholder: "Type a keyword  🔍"
+        %>
+    <% end %>
+  </div>
     <li class="buttonfilter"><i class="fa-solid fa-sort"></i> Filters</li>
   </ul>
 </nav>

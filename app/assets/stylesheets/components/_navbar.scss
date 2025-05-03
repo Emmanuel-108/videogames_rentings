@@ -103,10 +103,15 @@
   .sub-nav-links {
     list-style: none;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     gap: 2rem;
     padding-right: 40px;
+    padding-left: 40px;
     margin: 0;
+
+    .searchbar {
+       height: 40px;
+    }
 
     li a {
       color: #fff;
