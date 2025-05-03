@@ -29,3 +29,9 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      long: "%B %d, %Y"  # "May 01, 2025"
+  time:
+      formats:
+        long: "%B %d, %Y"
