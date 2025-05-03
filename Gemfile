@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.3.5"
 
+# PG Seach
+gem "pg_search"
+
 # Cloudinary
 gem "cloudinary"
 gem "activestorage-cloudinary-service"
