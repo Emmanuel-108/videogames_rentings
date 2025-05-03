@@ -13,14 +13,17 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, border 0.2s ease;
   display: flex;
   flex-direction: column;
   color: #eee;
   max-height: 450px;
+  border: 2px solid transparent;
 
   &:hover {
     transform: scale(1.02);
+    border: 2px solid rgb(249, 129, 1);
+    box-shadow: 0 5px 20px rgba(249, 129, 1, 0.5);
   }
 }
 
