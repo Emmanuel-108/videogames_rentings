@@ -3,7 +3,7 @@
   <div class="body login-container">
     <h1 class="body ">Add a New Game</h1>
 
-    <%= form_with(model: @videogame, local: true, html: { multipart: true, class: "login-form" }) do |form| %>
+    <%= form_with(model: @videogame, local: true, html: { multipart: true, class: "login-form" }, data: { controller: "upload-image" }) do |form| %>
 
       <% if @videogame.errors.any? %>
         <div class="errors">
@@ -48,12 +48,25 @@
 
       <div class="form-group">
         <%= form.label :background_image, "Game Image (URL only)" %><br>
-        <%= form.text_field :background_image, class: "form-control", placeholder: "Example: https://my-image.jpg" %>
+        <%= form.text_field :background_image,
+            id: "backgroundImageInput",
+            class: "form-control",
+            placeholder: "Example: https://my-image.jpg",
+            data: {
+            upload_image_target: "backgroundImage",
+            action: "input->upload-image#toggle"
+            } %>
       </div>
 
       <div class="form-group">
         <%= form.label :photo, "Submit Image" %><br />
-        <%= form.file_field :photo, class: "form-control" %>
+        <%= form.file_field :photo,
+            id: "photoInput",
+            class: "form-control",
+            data: {
+            upload_image_target: "photo",
+            action: "change->upload-image#toggle"
+            } %>
       </div>
 
       <div class="form-group">
