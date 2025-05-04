@@ -80,3 +80,15 @@
   border-radius: 8px;
   margin-bottom: 20px;
 }
+
+.disabled-field {
+  background-color: #2e2e2e;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input.form-control.disabled-field {
+  background-color: #2e2e2e !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
