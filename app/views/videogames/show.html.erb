@@ -9,23 +9,28 @@
 
   <div class="show-info">
     <h1><%= @videogame.name %></h1>
-    <p><strong>Category :</strong> <%= @videogame.category %></p>
-    <p><strong>Platforme :</strong> <%= @videogame.platform %></p>
-    <p><strong>Rating :</strong> <%= @videogame.rating %>/10</p>
-    <p><strong>Price :</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
+    <p><strong>Category:</strong> <%= @videogame.category %></p>
+    <p><strong>Platforme:</strong> <%= @videogame.platform %></p>
+    <p><strong>Rating:</strong> <%= @videogame.rating %>/5</p>
+    <p><strong>Price:</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
     <p><%= simple_format(@videogame.description) %></p>
 
-    <div class="actions">
-      <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
-      <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
-    </div>
-
     <% if current_user && @videogame.owner == current_user %>
+        <div class="actions">
+        <%= form_with model: @videogame, method: :edit, local: true do |form| %>
+          <%= form.submit "Update this game", class: "update-game-button" %>
+        <% end %>
+      </div>
       <div class="actions">
         <%= form_with model: @videogame, method: :delete, local: true do |form| %>
           <%= form.submit "Delete this game", class: "delete-game-button" %>
         <% end %>
       </div>
+    <% else %>
+        <div class="actions">
+      <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
+      <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
+    </div>
     <% end %>
 
     <% if current_user %>

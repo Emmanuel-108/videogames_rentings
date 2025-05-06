@@ -93,9 +93,27 @@
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
+  margin-top: 10px;
 
   &:hover {
     background-color: #fa5252;
+  }
+}
+
+.update-game-button {
+  display: inline-block;
+  background-color: #55e376;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #38c828;
   }
 }
