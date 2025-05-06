@@ -10,9 +10,38 @@
         %>
     <% end %>
   </div>
-    <li class="buttonfilter"><i class="fa-solid fa-sort"></i> Filters</li>
+
+    <button type="button" class="buttonfilter"><i class="fa-solid fa-sort"></i> Filters</button>
+
   </ul>
+
 </nav>
+
+  <div id="filter-panel" class="filter-panel hidden">
+    <%= form_with url: videogames_path, method: :get, local: true do %>
+      <div class="filter-group">
+        <%= label_tag :category, "Category" %>
+        <%= select_tag :category, options_for_select(Videogame.pluck(:category).uniq.sort.prepend("All"), params[:category]), class: "form-control" %>
+      </div>
+
+      <div class="filter-group">
+        <%= label_tag :platform, "Platform" %>
+        <%= select_tag :platform, options_for_select(Videogame.pluck(:platform).uniq.sort.prepend("All"), params[:platform]), class: "form-control" %>
+      </div>
+
+      <div class="filter-group">
+        <%= label_tag :max_price, "Max Price ($)" %>
+        <%= number_field_tag :max_price, params[:max_price], class: "form-control", step: 1, min: 0 %>
+      </div>
+
+      <div class="filter-group">
+        <%= label_tag :min_rating, "Minimum Rating" %>
+        <%= number_field_tag :min_rating, params[:min_rating], class: "form-control", step: 1, min: 1, max: 5 %>
+      </div>
+
+      <%= submit_tag "Apply Filters", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
 <div class="videogames-container body">
   <% @videogames.each do |videogame| %>

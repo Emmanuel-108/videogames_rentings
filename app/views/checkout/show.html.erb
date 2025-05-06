@@ -40,12 +40,6 @@
     <div class="payment-panel">
       <h2>Payment</h2>
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger"><%= flash[:alert] %></div>
-      <% elsif flash[:notice] %>
-        <div class="alert alert-success"><%= flash[:notice] %></div>
-      <% end %>
-
       <% if @bookings.any? %>
         <%= form_with url: confirm_payment_path, method: :post, local: true, html: { class: "checkout-form" } do |form| %>
           <div class="form-group">
