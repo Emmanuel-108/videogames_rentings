@@ -18,9 +18,11 @@
   flex-direction: column;
   color: #eee;
   max-height: 450px;
+  border: 2px solid transparent;
 
   &:hover {
     transform: scale(1.02);
+    border: 3px solid #E47200;
   }
 }
 
@@ -47,4 +49,92 @@
 .card-link {
   text-decoration: none;
   color: inherit;
+}
+.buttonfilter {
+  background-color: #E47200;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  i {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: #cf6600;
+  }
+}
+
+.filter-panel {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  select,
+  input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3a3a3a;
+    color: white;
+  }
+}
+
+.btn.btn-primary {
+  background-color: #E47200;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cf6600;
+  }
+}
+.buttonfilter {
+  background-color: #E47200;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+
+  i {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: #cf6600;
+  }
 }

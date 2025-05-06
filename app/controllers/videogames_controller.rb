@@ -10,9 +10,26 @@ class VideogamesController < ApplicationController
 
   def index
     @videogames = Videogame.all
+
     if params[:query].present?
       sql_subquery = "name ILIKE :query OR description ILIKE :query"
       @videogames = @videogames.where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    if params[:category].present? && params[:category] != "All"
+      @videogames = @videogames.where(category: params[:category])
+    end
+
+    if params[:platform].present? && params[:platform] != "All"
+      @videogames = @videogames.where(platform: params[:platform])
+    end
+
+    if params[:max_price].present?
+      @videogames = @videogames.where("price <= ?", params[:max_price].to_f)
+    end
+
+    if params[:min_rating].present?
+      @videogames = @videogames.where("rating >= ?", params[:min_rating].to_i)
     end
   end
 

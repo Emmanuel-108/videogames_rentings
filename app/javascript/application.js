@@ -3,3 +3,15 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+
+
+document.addEventListener("turbo:load", () => {
+  const filterButton = document.querySelector(".buttonfilter");
+  const filterPanel = document.getElementById("filter-panel");
+
+  if (filterButton && filterPanel) {
+    filterButton.addEventListener("click", () => {
+      filterPanel.classList.toggle("hidden");
+    });
+  }
+});
