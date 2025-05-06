@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
 
-  resource :profile, only: [:edit, :update]
+  resource :profile, only: [:show, :edit, :update]
 
 
   get "/my_videogames", to: "videogames#my_videogames"
