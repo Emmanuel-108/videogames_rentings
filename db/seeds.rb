@@ -15,7 +15,7 @@ user = User.first_or_create!(
 
 url = "https://api.rawg.io/api/games?key=#{api_key}&page=1&page_size=10"
 response = HTTParty.get(url)
-games = response.parsed_response['results'] # ✅ Cette ligne est essentielle
+games = response.parsed_response['results']
 
 games.each do |game_data|
   game_id = game_data['id']
