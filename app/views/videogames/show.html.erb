@@ -14,7 +14,7 @@
     <p><strong>Rating:</strong> <%= @videogame.rating %>/5</p>
     <p><strong>Price:</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
 
-    <!-- Description avec Show More -->
+
     <div id="description-container">
       <div id="short-description" class="description">
         <%= truncate(strip_tags(@videogame.description), length: 300, separator: ' ', omission: '...') %>
