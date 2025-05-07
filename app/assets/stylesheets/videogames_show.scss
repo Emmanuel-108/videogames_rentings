@@ -31,6 +31,30 @@
   }
 }
 
+#short-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.5em;
+  max-height: 4.5em;
+  transition: max-height 0.3s ease;
+}
+
+#full-description {
+  display: none;
+  line-height: 1.5em;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #5c7cfa;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
 .actions {
   margin-top: 20px;
 }
@@ -116,4 +140,27 @@
   &:hover {
     background-color: #38c828;
   }
+}
+#short-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.5em;
+  max-height: 4.5em;
+  transition: max-height 0.3s ease;
+}
+
+#full-description {
+  display: none;
+  line-height: 1.5em;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #5c7cfa;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
 }
