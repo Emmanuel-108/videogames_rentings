@@ -22,7 +22,8 @@
 
   &:hover {
     transform: scale(1.02);
-    border: 3px solid #E47200;
+    border: 3px solid rgb(228, 114, 0);
+    box-shadow: 0 5px 20px rgba(255, 106, 0, 0.5);
   }
 }
 
