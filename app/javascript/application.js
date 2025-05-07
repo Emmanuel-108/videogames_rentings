@@ -15,3 +15,20 @@ document.addEventListener("turbo:load", () => {
     });
   }
 });
+
+
+// Show more button
+document.addEventListener("turbo:load", () => {
+  const shortDesc = document.getElementById("short-description");
+  const fullDesc = document.getElementById("full-description");
+  const toggleBtn = document.getElementById("toggle-description");
+
+  if (shortDesc && fullDesc && toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = fullDesc.style.display === "none" || fullDesc.style.display === "";
+      fullDesc.style.display = isHidden ? "block" : "none";
+      shortDesc.style.display = isHidden ? "none" : "block";
+      toggleBtn.textContent = isHidden ? "Show less" : "Show more";
+    });
+  }
+});
