@@ -72,3 +72,9 @@
 
   }
 }
+
+.borderedform:focus {
+  border: 2px solid #e47200;
+  outline: none;
+  box-shadow: none;
+}
