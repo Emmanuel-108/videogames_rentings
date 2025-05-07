@@ -17,20 +17,18 @@
 
     <% if current_user && @videogame.owner == current_user %>
         <div class="actions">
-        <%= form_with model: @videogame, method: :edit, local: true do |form| %>
-          <%= form.submit "Update this game", class: "update-game-button" %>
-        <% end %>
-      </div>
+          <%= link_to 'Update this game', edit_videogame_path(@videogame), class: "buttonfilter update" %>
+        </div>
       <div class="actions">
         <%= form_with model: @videogame, method: :delete, local: true do |form| %>
           <%= form.submit "Delete this game", class: "delete-game-button" %>
         <% end %>
       </div>
     <% else %>
-        <div class="actions">
-      <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
-      <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
-    </div>
+      <div class="actions">
+        <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
+        <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
+      </div>
     <% end %>
 
     <% if current_user %>
