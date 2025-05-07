@@ -14,7 +14,7 @@
     <p><strong>Rating:</strong> <%= @videogame.rating %>/5</p>
     <p><strong>Price:</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
 
-    <!-- Description avec Show More -->
+
     <div id="description-container">
       <div id="short-description" class="description">
         <%= truncate(strip_tags(@videogame.description), length: 300, separator: ' ', omission: '...') %>
@@ -28,6 +28,11 @@
     </div>
 
     <% if current_user && @videogame.owner == current_user %>
+    
+        <div class="actions">
+          <%= link_to 'Update this game', edit_videogame_path(@videogame), class: "buttonfilter update" %>
+        </div>
+
       <div class="actions">
         <%= form_with model: @videogame, method: :edit, local: true do |form| %>
           <%= form.submit "Update this game", class: "update-game-button" %>
