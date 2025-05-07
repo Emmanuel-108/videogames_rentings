@@ -30,7 +30,7 @@
     <% if current_user && @videogame.owner == current_user %>
 
         <div class="actions">
-          <%= link_to 'Update this game', edit_videogame_path(@videogame), class: "buttonfilter update" %>
+          <%= link_to 'Update this game', edit_videogame_path(@videogame), class: "buttonfilter update-game-button" %>
         </div>
       <div class="actions">
         <%= form_with model: @videogame, method: :delete, local: true do |form| %>
