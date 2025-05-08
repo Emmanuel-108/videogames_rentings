@@ -7,28 +7,33 @@ class BookingsController < ApplicationController
 
   def new
     @videogame = Videogame.find(params[:videogame_id])
+
+    if @videogame.user_id == current_user
+      redirect_to videogame_path(@videogame), alert: "You cannot rent your own game."
+      return
+    end
+
     @booking = @videogame.bookings.new
   end
 
   def create
     @videogame = Videogame.find(params[:videogame_id])
+
+    if @videogame.user_id == current_user
+      redirect_to videogame_path(@videogame), alert: "You cannot rent your own game."
+      return
+    end
+
     @booking = @videogame.bookings.build(booking_params)
     @booking.user = current_user
 
-    if @videogame.user_id.nil?
-      @booking.status = "unpaid"
-    else
-      @booking.status = "pending"
-    end
-
+    @booking.status = @videogame.user_id.nil? ? "unpaid" : "pending"
 
     if @booking.save
       redirect_to checkout_path, notice: "Booking added to your cart."
-      return
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def destroy
@@ -57,10 +62,10 @@ class BookingsController < ApplicationController
     end
   end
 
-
   private
 
   def booking_params
     params.require(:booking).permit(:start_time, :end_time)
   end
+
 end

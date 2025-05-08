@@ -14,7 +14,6 @@
     <p><strong>Rating:</strong> <%= @videogame.rating %>/5</p>
     <p><strong>Price:</strong> <%= number_to_currency(@videogame.price, unit: "$") %></p>
 
-
     <div id="description-container">
       <div id="short-description" class="description">
         <%= truncate(strip_tags(@videogame.description), length: 300, separator: ' ', omission: '...') %>
@@ -28,20 +27,27 @@
       </div>
     </div>
 
-    <% if current_user && @videogame.owner == current_user %>
-
+    <% if user_signed_in? %>
+      <% if @videogame.owner == current_user %>
         <div class="actions">
           <%= link_to 'Update this game', edit_videogame_path(@videogame), class: "buttonfilter update-game-button" %>
         </div>
-      <div class="actions">
-        <%= form_with model: @videogame, method: :delete, local: true do |form| %>
-          <%= form.submit "Delete this game", class: "delete-game-button" %>
-        <% end %>
-      </div>
+        <div class="actions">
+          <%= form_with model: @videogame, method: :delete, local: true do |form| %>
+            <%= form.submit "Delete this game", class: "delete-game-button" %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="actions">
+          <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
+          <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
+        </div>
+      <% end %>
     <% else %>
       <div class="actions">
         <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "buttonfilterlarge" %>
         <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
+        <%= link_to 'Sign in to rent', new_user_session_path, class: "rent-button" %>
       </div>
     <% end %>
 
