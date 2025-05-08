@@ -34,13 +34,17 @@
   width: 100%;
   padding: 15px;
   background: #2c2c2c;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 8px;
   color: #eee;
   font-size: 1.1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
     background: #3a3a3a;
+    border-color: #FC8000;
+    box-shadow: 0 0 5px #FC8000;
+    outline: none;
   }
 }
 
