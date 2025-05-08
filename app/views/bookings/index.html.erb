@@ -25,11 +25,14 @@
                 <%= booking.status.capitalize %>
               </span>
             </p>
-            <% if booking.videogame.owner.present? %>
-              <% owner = booking.videogame.owner %>
-              <%= link_to "Contact Owner", profile_path(owner), class: "owner-contact" %>
-            <% end %>
-            <%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation?" }, class: "cancel-link" %>
+
+            <div class="booking-actions">
+              <%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation?" }, class: "cancel-link" %>
+              <% if booking.videogame.owner.present? %>
+                <% owner = booking.videogame.owner %>
+                <%= link_to "Contact Owner", profile_path(owner), class: "owner-contact" %>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
