@@ -70,6 +70,20 @@
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease;
+
+
+  &:hover {
+    background-color: #f67e04;
+    transform: scale(1.05);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: #3730a3;
+    transform: scale(0.98);
+
+  }
 }
 
 .back-button {

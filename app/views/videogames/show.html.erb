@@ -23,8 +23,9 @@
       <div id="full-description" class="description">
         <%= simple_format(@videogame.description) %>
       </div>
-
-      <button id="toggle-description" class="toggle-button">Show more</button>
+      <div class="mt-2 pb-3">
+        <button id="toggle-description" class="toggle-button orange-link">Show more</button>
+      </div>
     </div>
 
     <% if current_user && @videogame.owner == current_user %>
@@ -39,7 +40,7 @@
       </div>
     <% else %>
       <div class="actions">
-        <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "rent-button" %>
+        <%= link_to 'Rent this game', new_videogame_booking_path(@videogame), class: "buttonfilterlarge" %>
         <%= link_to 'Back to the list', videogames_path, class: "back-button" %>
       </div>
     <% end %>
