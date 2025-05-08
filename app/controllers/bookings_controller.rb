@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
   def new
     @videogame = Videogame.find(params[:videogame_id])
 
-    if @videogame.user == current_user
+    if @videogame.user_id == current_user
       redirect_to videogame_path(@videogame), alert: "You cannot rent your own game."
       return
     end
@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
   def create
     @videogame = Videogame.find(params[:videogame_id])
 
-    if @videogame.user == current_user
+    if @videogame.user_id == current_user
       redirect_to videogame_path(@videogame), alert: "You cannot rent your own game."
       return
     end

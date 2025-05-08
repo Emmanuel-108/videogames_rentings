@@ -1,4 +1,5 @@
 class VideogamesController < ApplicationController
+
   def my_videogames
     @my_videogames = current_user.videogames
 
