@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
 
   resource :profile, only: [:show, :edit, :update]
+  get 'profiles/:user_id/contact', to: 'profiles#contact', as: :contact_profile
 
 
   get "/my_videogames", to: "videogames#my_videogames"

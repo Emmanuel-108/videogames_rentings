@@ -30,7 +30,7 @@
               <%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Confirm cancellation?" }, class: "cancel-link" %>
               <% if booking.videogame.owner.present? %>
                 <% owner = booking.videogame.owner %>
-                <%= link_to "Contact Owner", profile_path(owner), class: "owner-contact" %>
+                <%= link_to "Contact Owner", contact_profile_path(owner), class: "owner-contact" %>
               <% end %>
             </div>
           </div>
