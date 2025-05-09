@@ -18,39 +18,39 @@
 
       <div class="form-group">
         <%= form.label :name, "Game Name" %><br />
-        <%= form.text_field :name, class: "form-control" %>
+        <%= form.text_field :name, class: "form-control borderedform" %>
       </div>
 
       <div class="form-group">
         <%= form.label :description, "Description" %><br />
-        <%= form.text_area :description, class: "form-control" %>
+        <%= form.text_area :description, class: "form-control borderedform" %>
       </div>
 
       <div class="form-group">
         <%= form.label :rating, "Rating (0 to 5)" %><br />
-        <%= form.number_field :rating, in: 0..5, step: 1.0, class: "form-control" %>
+        <%= form.number_field :rating, in: 0..5, step: 1.0, class: "form-control borderedform" %>
       </div>
 
       <div class="form-group">
         <%= form.label :price, "Price" %><br />
-        <%= form.number_field :price, step: 0.01, class: "form-control" %>
+        <%= form.number_field :price, step: 0.01, class: "form-control borderedform" %>
       </div>
 
       <div class="form-group">
         <%= form.label :category, "Category" %><br />
-        <%= form.select :category, Videogame::CATEGORIES, {}, class: "form-control" %>
+        <%= form.select :category, Videogame::CATEGORIES, {}, class: "form-control borderedform" %>
       </div>
 
       <div class="form-group">
         <%= form.label :platform, "Platform" %><br />
-        <%= form.text_field :platform, class: "form-control" %>
+        <%= form.text_field :platform, class: "form-control borderedform" %>
       </div>
 
       <div class="form-group">
         <%= form.label :background_image, "Game Image (URL only)" %><br>
         <%= form.text_field :background_image,
             id: "backgroundImageInput",
-            class: "form-control",
+            class: "form-control borderedform",
             placeholder: "Example: https://my-image.jpg",
             data: {
             upload_image_target: "backgroundImage",
@@ -62,15 +62,15 @@
         <%= form.label :photo, "Submit Image" %><br />
         <%= form.file_field :photo,
             id: "photoInput",
-            class: "form-control",
+            class: "form-control borderedform",
             data: {
             upload_image_target: "photo",
             action: "change->upload-image#toggle"
             } %>
       </div>
 
-      <div class="form-group">
-        <%= form.submit "Save Game", class: "login-button" %>
+      <div class="form-group text-center">
+        <%= form.submit "Save Game", class: "buttonfilterlarge" %>
       </div>
 
     <% end %>

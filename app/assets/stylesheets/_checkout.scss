@@ -99,8 +99,9 @@
       }
 
       &:focus {
-        background: #444;
+        border: 2px solid #e47200;
         outline: none;
+        box-shadow: none;
       }
     }
 
