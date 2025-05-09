@@ -62,7 +62,7 @@
 .rent-button,
 .back-button {
   display: inline-block;
-  background-color: #5c7cfa;
+  background-color: #e47200;
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
@@ -70,7 +70,6 @@
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease;
-
 
   &:hover {
     background-color: #f67e04;
@@ -90,9 +89,6 @@
   background-color: #666;
 }
 
-.rent-button:hover {
-  background-color: #4c6ef5;
-}
 
 .back-button:hover {
   background-color: #555;
